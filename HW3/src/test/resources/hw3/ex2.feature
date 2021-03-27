@@ -10,24 +10,25 @@ Feature: Exercise 1 of Homework 3
   Scenario: assert username
     Then Username is "ROMAN IOVLEV"
 
-  Scenario:
+  Scenario: assert header list items
     When I click on service at header
     Then I see 9 header list items
     And  Header list items have proper text
 
-  Scenario:
+  Scenario: assert sidebar list items
     When I click on service at left sidebar
     Then I see 9 sidebar list items
     And  Sidebar list items have proper text
 
-  Scenario:
+  Scenario: looking around at Element Page
     Given I am on Element Page
     Then I see 4 checkboxes
     And I see 4 radio buttons
-    And I see 1 dropdown
-    And I see 2 buttons
+    And I see the dropdown
+    And I see the button1
+    And I see the button2
 
-  Scenario:
+  Scenario: element page right sidebar
     Given I am on Element Page
     Then I see the right sidebar
 
@@ -37,45 +38,45 @@ Feature: Exercise 1 of Homework 3
 
   Scenario:
     Given I am on Element Page
-    When I check "Water, Wind"
+    When I select "Water, Wind" at checkboxes
     Then "Water, Wind" are checked
 
   Scenario:
     Given I am on Element Page
-    When I check "Water, Wind"
+    When I select "Water, Wind" at checkboxes
     Then "Water, Wind" is logged as "true, true"
 
-  Scenario:
+  Scenario: selen is selected
     Given I am on Element Page
     When I select "Selen" at radios
     Then "Selen" is selected at radios
 
-  Scenario:
+  Scenario: log test
     Given I am on Element Page
     When I select "Selen" at radios
-    Then "Metal" is logged as "Selen"
+    Then "metal" is logged as "Selen"
 
-  Scenario:
+  Scenario: yellow is selected
     Given I am on Element Page
     When I select "Yellow" at dropdown
     Then "Yellow" is selected at dropdown
 
-  Scenario:
+  Scenario: log test 2
     Given I am on Element Page
     When I select "Yellow" at dropdown
-    Then "Color" is logged as "Yellow"
+    Then "Colors" is logged as "Yellow"
 
   Scenario:
     Given I am on Element Page
-    When I check "Water, Wind"
-    And  I check "Water, Wind"
+    When I select "Water, Wind" at checkboxes
+    And  I select "Water, Wind" at checkboxes
     Then "Water, Wind" are not checked
 
-  Scenario:
+  Scenario: log test
     Given I am on Element Page
-    When I check "Water, Wind"
-    And  I check "Water, Wind"
-    Then "Water, Wind" is logged as "false, false"
+    When I select "Water, Wind" at checkboxes
+    And  I select "Water, Wind" at checkboxes
+    Then "Water, Wind, Water, Wind" is logged as "true, true, false, false"
 
 
 

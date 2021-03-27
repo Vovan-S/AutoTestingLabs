@@ -1,4 +1,4 @@
-package hw3.PageObjects;
+package hw3.AbstractPageObjects;
 
 import org.openqa.selenium.WebDriver;
 

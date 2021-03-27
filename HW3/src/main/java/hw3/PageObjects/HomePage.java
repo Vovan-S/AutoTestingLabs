@@ -1,5 +1,6 @@
 package hw3.PageObjects;
 
+import hw3.AbstractPageObjects.PageComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class HomePage {
+public class HomePage implements PageComponent {
 
     @FindBy(id = "user-icon")
     WebElement userIcon;
@@ -43,13 +44,17 @@ public class HomePage {
     WebElement footer;
     @FindBy(className = "dropdown")
     WebElement headerDropdown;
-    @FindBy(xpath = "*[class='dropdown'][1]//a")
+    @FindBy(xpath = "//ul[@class='dropdown-menu']//a")
     List<WebElement> headerDropdownList;
     @FindBy(xpath = "//*[@class='sidebar-menu']/li[3]")
     WebElement leftSectionDropdown;
     @FindBy(xpath = "//*[@class='sidebar-menu']/li[3]//li")
     List<WebElement> leftSectionDropdownList;
 
+    @Override
+    public void initElements(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
 
     public enum Element {
         Username,
@@ -72,9 +77,6 @@ public class HomePage {
         LeftSectionDropdownList
     }
 
-    public HomePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
 
     public void login(String name, String password) {
         userIcon.click();
@@ -157,11 +159,17 @@ public class HomePage {
 
     public HomePage openIFrame(WebDriver driver) {
         driver.switchTo().frame(iFrame);
-        return new HomePage(driver);
+        HomePage frame = new HomePage();
+        frame.initElements(driver);
+        return frame;
     }
 
     public void click(Element element) {
         WE(element).click();
+    }
+
+    public void click(ElementList list, int which) {
+        WEList(list).get(which).click();
     }
 
 }

@@ -1,11 +1,11 @@
 package hw3.PageObjects;
 
+import hw3.AbstractPageObjects.ClickableElement;
+import hw3.AbstractPageObjects.PageComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.List;
 
 public class ElementsPage implements PageComponent {
     LogElement logs = new LogElement();

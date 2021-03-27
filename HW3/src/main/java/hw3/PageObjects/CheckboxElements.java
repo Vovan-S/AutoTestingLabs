@@ -1,5 +1,9 @@
 package hw3.PageObjects;
 
+import hw3.AbstractPageObjects.ClickableElement;
+import hw3.AbstractPageObjects.GroupedComponent;
+import hw3.AbstractPageObjects.PageComponent;
+import hw3.AbstractPageObjects.SelectableElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckboxElements implements SelectableElement, PageComponent {
+public class CheckboxElements implements SelectableElement, PageComponent, GroupedComponent {
     @FindBy(xpath = "//main//input[@type='checkbox']")
     List<WebElement> checkboxes;
     List<ClickableElement> checkboxElements;
@@ -54,5 +58,15 @@ public class CheckboxElements implements SelectableElement, PageComponent {
         for(WebElement webElement: checkboxes) {
             checkboxElements.add(new ClickableElement(webElement));
         }
+    }
+
+    @Override
+    public int numberOfElements() {
+        return checkboxElements.size();
+    }
+
+    @Override
+    public SelectableElement getElement(int i) {
+        return checkboxElements.get(i);
     }
 }

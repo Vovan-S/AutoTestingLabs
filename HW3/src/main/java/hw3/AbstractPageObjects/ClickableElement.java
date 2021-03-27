@@ -1,11 +1,11 @@
-package hw3.PageObjects;
+package hw3.AbstractPageObjects;
 
 import org.openqa.selenium.WebElement;
 
 public class ClickableElement implements SelectableElement {
     WebElement element;
 
-    ClickableElement(WebElement webElement) {
+    public ClickableElement(WebElement webElement) {
         element = webElement;
     }
 

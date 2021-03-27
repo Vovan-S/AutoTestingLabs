@@ -1,5 +1,6 @@
 package hw3.PageObjects;
 
+import hw3.AbstractPageObjects.PageComponent;
 import javafx.util.Pair;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
